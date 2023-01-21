@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create new world champion{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item"><a href = "{% url 'worlds' %}">World Champions</a></li>
+<li class="breadcrumb-item active">New World Champion</li>
+{% endblock %}
+
+{% block content %}
+<h2>New World Champion</h2>
+<form method="POST" class="world-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-secondary">Save</button>
+</form>
+{% endblock %}

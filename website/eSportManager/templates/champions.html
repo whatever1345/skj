@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">In-game Champions</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'champion_new' %}" class="btn btn-primary">New In-game Champion</a>
+</div>
+
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>List of In-game Champions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Health</th>
+        <th>Mana</th>
+    </tr>
+    {% for champion in champions %}
+    <tr>
+        <td>
+            {{ champion.name }}
+        </td>
+        <td class="align-middle">{{ champion.health }}</td>
+        <td class="align-middle">{{ champion.mana }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

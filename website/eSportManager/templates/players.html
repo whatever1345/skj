@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">Players</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'player_new' %}" class="btn btn-primary">New Player</a>
+</div>
+
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>List of Regions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Current Team</th>
+        <th>Main Champion</th>
+        <th>Position</th>
+        <th>Status</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td>
+            {{ player.name }}
+        </td>
+        <td class="align-middle">{{ player.current_team }}</td>
+        <td class="align-middle">{{ player.champ }}</td>
+        <td class="align-middle">{{ player.get_position_display }}</td>
+        <td class="align-middle">{{ player.get_status_display }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">Regions</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'region_new' %}" class="btn btn-primary">New Region</a>
+</div>
+
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>List of Regions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Abbr</th>
+        <th>Full Name</th>
+        <th>Place</th>
+    </tr>
+    {% for region in regions %}
+    <tr>
+        <td>
+            {{ region.abbr }}
+        </td>
+        <td class="align-middle">{{ region.name }}</td>
+        <td class="align-middle">{{ region.place }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create new in-game champion{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item"><a href = "{% url 'champions' %}">In-game Champions</a></li>
+<li class="breadcrumb-item active">New In-game Champions</li>
+{% endblock %}
+
+{% block content %}
+<h2>New In-game Champions</h2>
+<form method="POST" class="champion-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-secondary">Save</button>
+</form>
+{% endblock %}

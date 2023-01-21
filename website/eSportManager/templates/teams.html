@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">Teams</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'team_new' %}" class="btn btn-primary">New Team</a>
+</div>
+
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>List of Teams</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Established since</th>
+        <th>Status</th>
+    </tr>
+    {% for team in teams %}
+    <tr>
+        <td>
+            <a href="{% url 'team_detail' team.pk %}">{{ team.name }}</a>
+        </td>
+        <td class="align-middle">{{ team.region }}</td>
+        <td class="align-middle">{{ team.established_since }}</td>
+        <td class="align-middle">{{ team.get_status_display }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

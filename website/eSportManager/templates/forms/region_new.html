@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create new region{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item"><a href = "{% url 'regions' %}">Regions</a></li>
+<li class="breadcrumb-item active">New Region</li>
+{% endblock %}
+
+{% block content %}
+<h2>New Region</h2>
+<form method="POST" class="region-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-secondary">Save</button>
+</form>
+{% endblock %}

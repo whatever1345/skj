@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create new coach{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item"><a href = "{% url 'coachs' %}">Coaches</a></li>
+<li class="breadcrumb-item active">New Coach</li>
+{% endblock %}
+
+{% block content %}
+<h2>New Coach</h2>
+<form method="POST" class="coach-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-secondary">Save</button>
+</form>
+{% endblock %}

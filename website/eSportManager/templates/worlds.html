@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href = "{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">World Champions</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'world_new' %}" class="btn btn-primary">New World Champion</a>
+</div>
+
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>List of World Champions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Year</th>
+    </tr>
+    {% for world in worlds %}
+    <tr>
+        <td>
+            <a href="{% url 'team_detail' world.champion.pk %}">{{ world.champion }}</a>
+        </td>
+        <td class="align-middle">{{ world.year }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
